@@ -32,6 +32,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     implementation("org.example:integration:1.0.0")
     implementation("org.example:interpreter:1.0.0")
+    implementation("org.example:common:1.0.0")
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 

@@ -3,7 +3,7 @@ package adapters
 import org.example.integration.Interpreter as IntegrationInterpreter
 import org.example.interpreter.input.InputProvider as IntegrationInputProvider
 import org.example.interpreter.output.OutputPrinter as IntegrationOutputPrinter
-import org.example.interpreter.output.ErrorHandler as IntegrationErrorHandler
+import org.example.common.ErrorHandler as IntegrationErrorHandler
 
 
 import interpreter.PrintScriptInterpreter as TckInterpreter
@@ -31,19 +31,13 @@ class AdapterInterpreter : TckInterpreter {
         val err: IntegrationErrorHandler = ErrorHandlerFromTck(handler)
         val inp: IntegrationInputProvider = InputProviderFromTck(provider)
 
-        try {
-            IntegrationInterpreter().execute(
-                src = lines,
-                version = version,
-                emitter = out,
-                handler = err,
-                provider = inp
-            )
-        } catch (oom: OutOfMemoryError) {
-            err.handleError("Java heap space")
-        } catch (t: Throwable) {
-            err.handleError(t.message ?: (t::class.simpleName ?: "Unknown error"))
-        }
+        IntegrationInterpreter().execute(
+            src = lines,
+            version = version,
+            emitter = out,
+            handler = err,
+            provider = inp
+        )
     }
 }
 
