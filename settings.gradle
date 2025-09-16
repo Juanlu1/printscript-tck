@@ -3,7 +3,8 @@ rootProject.name = 'printscript-tck'
 includeBuild("../printscript") {
     dependencySubstitution {
         substitute(module("org.example:integration")).using(project(":integration"))
-        substitute(module("org.example:interpreter")).using(project(":interpreter"))
         substitute(module("org.example:common")).using(project(":common"))
+        substitute(module("org.example:interpreter")).using(project(":interpreter"))
+        substitute(module("org.example:linter")).using(project(":linter"))
     }
 }

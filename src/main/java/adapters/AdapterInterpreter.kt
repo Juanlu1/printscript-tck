@@ -28,7 +28,7 @@ class AdapterInterpreter : TckInterpreter {
         val lines: Iterator<String> = LineIterator(src)
 
         val out: IntegrationOutputPrinter = OutputPrinterFromTck(emitter)
-        val err: IntegrationErrorHandler = ErrorHandlerFromTck(handler)
+        val err: IntegrationErrorHandler = AdapterErrorHandler(handler)
         val inp: IntegrationInputProvider = InputProviderFromTck(provider)
 
         IntegrationInterpreter().execute(
@@ -41,20 +41,11 @@ class AdapterInterpreter : TckInterpreter {
     }
 }
 
-
 private class OutputPrinterFromTck(
     private val tck: TckPrintEmitter
 ) : IntegrationOutputPrinter {
     override fun print(output: String) {
         tck.print(output)
-    }
-}
-
-private class ErrorHandlerFromTck(
-    private val tck: TckErrorHandler
-) : IntegrationErrorHandler {
-    override fun handleError(message: String) {
-        tck.reportError(message)
     }
 }
 
