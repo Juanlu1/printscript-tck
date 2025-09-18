@@ -53,8 +53,8 @@ private class OutputPrinterFromTck(
 private class InputProviderFromTck(
     private val tck: TckInputProvider
 ) : IntegrationInputProvider {
-    override fun readInput(prompt: String): String {
-        return tck.input(prompt)
+    override fun readInput(): String {
+        return tck.input("algo tengo que poner")
     }
 
 }
