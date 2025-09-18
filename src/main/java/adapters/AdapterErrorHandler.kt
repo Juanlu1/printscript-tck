@@ -8,7 +8,6 @@ class AdapterErrorHandler(
     private val tck: TckErrorHandler
 ) : IntegrationErrorHandler {
     override fun handleError(message: String) {
-        println(message)
         tck.reportError(message)
     }
 }

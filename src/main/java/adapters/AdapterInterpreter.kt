@@ -45,7 +45,6 @@ private class OutputPrinterFromTck(
     private val tck: TckPrintEmitter
 ) : IntegrationOutputPrinter {
     override fun print(output: String) {
-        System.err.println("[TRACE] print: $output")
         tck.print(output)
     }
 }
