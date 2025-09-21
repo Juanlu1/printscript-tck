@@ -31,13 +31,17 @@ class AdapterInterpreter : TckInterpreter {
         val err: IntegrationErrorHandler = AdapterErrorHandler(handler)
         val inp: IntegrationInputProvider = InputProviderFromTck(provider)
 
-        IntegrationInterpreter().execute(
-            src = lines,
-            version = version,
-            emitter = out,
-            handler = err,
-            provider = inp
-        )
+        try {
+            IntegrationInterpreter().execute(
+                src = lines,
+                version = version,
+                emitter = out,
+                handler = err,
+                provider = inp
+            )
+        } catch (e: OutOfMemoryError) {
+            handler.reportError(e.message)
+        }
     }
 }
 
