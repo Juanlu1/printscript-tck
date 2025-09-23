@@ -6,15 +6,19 @@ plugins {
 repositories {
     mavenLocal()
     mavenCentral()
-// TODO: uncomment to be able to fetch packages in your own repository
-//    maven {
-//        name = "GitHubPackages"
-//        url = uri("https://maven.pkg.github.com/<your-username>/printscript")
-//        credentials {
-//            username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-//            password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
-//        }
-//    }
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/ingsis-printScript/printscript")
+        credentials {
+            username = findProperty("gpr.user") as String
+                    ?: System.getenv("GITHUB_ACTOR")
+
+            password = findProperty("gpr.key") as String
+                    ?: System.getenv("GITHUB_TOKEN")
+        }
+
+
+    }
 }
 
 java {
@@ -30,12 +34,9 @@ test {
 
 dependencies {
     testImplementation 'junit:junit:4.13.1'
-    implementation("org.example:integration:1.0.0")
-    implementation("org.example:common:1.0.0")
-    implementation("org.example:interpreter:1.0.0")
-    implementation("org.example:linter:1.0.0")
-    implementation("org.example:formatter:1.0.0")
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation "org.example:integration:0.1.153"
+    implementation "org.example:common:0.1.153"
+    implementation "org.example:interpreter:0.1.153"
 }
 
 test {

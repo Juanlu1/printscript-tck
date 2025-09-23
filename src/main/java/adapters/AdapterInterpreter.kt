@@ -40,7 +40,7 @@ class AdapterInterpreter : TckInterpreter {
                 provider = inp
             )
         } catch (e: OutOfMemoryError) {
-            handler.reportError(e.message)
+            handler.reportError("Java heap space")
         }
     }
 }
