@@ -14,8 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     
     env:
-      GITHUB_ACTOR: ${{ github.actor }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_ACTOR: skeczeli
+      GITHUB_TOKEN: ${{ secrets.GH_PACKAGES_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
