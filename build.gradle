@@ -34,9 +34,9 @@ test {
 
 dependencies {
     testImplementation 'junit:junit:4.13.1'
-    implementation "org.example:integration:latest.release"
-    implementation "org.example:common:latest.release"
-    implementation "org.example:interpreter:latest.release"
+    implementation "org.example:integration:0.1.156"
+    implementation "org.example:common:0.1.156"
+    implementation "org.example:interpreter:0.1.156"
 }
 
 test {
