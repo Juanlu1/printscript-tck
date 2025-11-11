@@ -5,18 +5,17 @@ plugins {
 
 repositories {
     mavenCentral()
+    mavenLocal()
     maven {
-        name = "GitHubPackages"
         url = uri("https://maven.pkg.github.com/ingsis-printScript/printscript")
         credentials {
-            username = findProperty("gpr.user") as String
+            username = findProperty("gpr.user")
+                    ?: System.getenv("GPR_USER")
                     ?: System.getenv("GITHUB_ACTOR")
-
-            password = findProperty("gpr.key") as String
+            password = findProperty("gpr.key")
+                    ?: System.getenv("GPR_KEY")
                     ?: System.getenv("GITHUB_TOKEN")
         }
-
-
     }
 }
 
@@ -33,9 +32,9 @@ test {
 
 dependencies {
     testImplementation 'junit:junit:4.13.1'
-    implementation "org.example:integration:latest.release"
-    implementation "org.example:common:latest.release"
-    implementation "org.example:interpreter:latest.release"
+    implementation "org.example:integration:0.1.159"
+    implementation 'org.example:common:0.1.159'
+    implementation 'org.example:interpreter:0.1.159'
 }
 
 test {
