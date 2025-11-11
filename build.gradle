@@ -5,18 +5,18 @@ plugins {
 
 repositories {
     mavenCentral()
-    mavenLocal()
     maven {
+        name = "GitHubPackages"
         url = uri("https://maven.pkg.github.com/ingsis-printScript/printscript")
         credentials {
-            username = findProperty("gpr.user")
-                    ?: System.getenv("GPR_USER")
-                    ?: System.getenv("GITHUB_ACTOR")
-            password = findProperty("gpr.key")
-                    ?: System.getenv("GPR_KEY")
-                    ?: System.getenv("GITHUB_TOKEN")
+            username = findProperty("gpr.user") as String
+                    ?: System.getenv("USERNAME")
+
+            password = findProperty("gpr.key") as String
+                    ?: System.getenv("TOKEN")
         }
-        // mati was here
+
+
     }
 }
 
